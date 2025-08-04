@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+    <h1>Are you sure to log out?</h1>
+    
+    <form th:action="@{/doLogout}" method="post">
+        <button>Yes</button>
+        <button id="no-btn">No</button>
+    </form>
+
+    <script>
+        document.querySelector("#no-btn").onclick = (e) => {
+            e.preventDefault();
+            window.location="home";
+        }
+    </script>
+</body>
+</html>
