@@ -4,7 +4,7 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Hello, <span th:text="${username}">User</span>!</h1>
+    <h1>Hello, <span th:text="${#authentication.name}">User</span>!</h1>
     <p>Click <a th:href="@{/myLogout}">here</a> to log out</p>
 </body>
 </html>

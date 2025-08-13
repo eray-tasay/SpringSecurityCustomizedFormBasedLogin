@@ -1,4 +1,4 @@
-package com.eraytasay.web;
+package com.eraytasay.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;

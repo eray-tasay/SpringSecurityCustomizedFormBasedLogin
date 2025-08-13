@@ -1,19 +1,19 @@
 package com.eraytasay.config;
 
-import com.eraytasay.security.UEPAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
-    private final UEPAuthenticationFilter UEPAuthenticationFilter;
+    private final AuthenticationFilter authenticationFilter;
 
-    public SecurityConfig(UEPAuthenticationFilter UEPAuthenticationFilter)
+    public SecurityConfig(AuthenticationFilter authenticationFilter)
     {
-        this.UEPAuthenticationFilter = UEPAuthenticationFilter;
+        this.authenticationFilter = authenticationFilter;
     }
 
     @Bean
@@ -28,7 +28,7 @@ public class SecurityConfig {
                     .logoutUrl("/doLogout")
                     .logoutSuccessUrl("/myLogin")
                     .permitAll())
-                .addFilterAt(UEPAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(c -> c
                     .requestMatchers("/myLogin", "/css/**", "/js/**", "/auth-test").permitAll()
                     .anyRequest().authenticated());
